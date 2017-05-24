@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>NotReddit</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>NotReddit</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <h1>NOT REDDIT</h1>
+  <div id="container">
+    <nav>
+      <ul class= "navbar-right">
+        <% if user_signed_in? %>
+        <li> Logged in as <strong><%= current_user.username %></strong></li>
+        <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-  </head>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <%= yield %>
+</body>
 </html>
