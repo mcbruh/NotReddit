@@ -1,2 +1,0 @@
-class Downvote < ApplicationRecord
-end
