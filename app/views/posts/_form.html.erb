@@ -1,0 +1,27 @@
+<%= form_for(@post) do |f| %>
+
+	<br>
+
+	<h3>Title</h3>
+
+	<br>
+
+	<fieldset>
+		<%= f.text_field :title %>
+	</fieldset>
+
+	<br>
+
+	<fieldset>
+		<%= f.text_area :content, :rows => "10" %>
+	</fieldset>
+
+	<br><br>
+
+	<div class = "actions">
+		<%=	f.submit %>
+	</div>
+
+	<br>
+
+<% end %>
