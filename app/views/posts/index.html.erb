@@ -1,1 +1,8 @@
+<head>
 <h1>Front Page</h1>
+<p><%= link_to "Submit a post", new_post_path %></p>
+</head>
+
+<% @posts.each_with_index do |post| %>
+	<h3><%=	"#{i+1}. "%><%= link_to post.title, post_path(post) %></h3>
+<% end %>
