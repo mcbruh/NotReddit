@@ -11,16 +11,26 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = @current_user.posts.build(post_params)
+		@post = Post.new(post_params)
+		@post.user_id = current_user.id
+		@post.save
+		redirect_to post_path(@post)
+	end
+
+	def show
+		@post = Post.find_by(:id => params[:id])
 	end
 
 	def edit
+
 	end
 
 	def update
+
 	end
 
 	def destroy
+		
 	end
 
 	private
@@ -30,6 +40,6 @@ class PostsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :user_id)
+		params.require(:post).permit(:title, :content, :id, :user_id)
 	end
 end
