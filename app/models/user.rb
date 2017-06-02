@@ -11,29 +11,18 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   def self.from_omniauth(auth)
-    if self.where(email: auth.info.email).exists?
-      return_user = self.where(email: auth.info.email).first
-      return_user.provider = auth.provider
-      return_user.uid = auth.uid
-    else
-      return_user = self.create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.username = auth.info.username
-        user.email = auth.info.email
-        user.oauth_token = auth.credentials.token
-        user.oauth_verifier = auth.credentials.verifier
-      end
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user| 
+      user.username = auth.info.nickname
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
     end
-    return_user
   end
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.twitter_data"]
-        user.username = data["nickname"]
-        user.email = data["email"]
-        user.uid = data[:uid]
+      if data = session["devise.twitter_data"] && session["devise.twitter_data"].except("extra")
+        user.username = data["nickname"] if user.username.blank?
+        user.email = data["email"] if user.email.blank?
       end
     end
   end
