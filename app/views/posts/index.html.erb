@@ -3,6 +3,6 @@
 <p><%= link_to "Submit a post", new_post_path %></p>
 </head>
 
-<% @posts.each_with_index do |post| %>
+<% @posts.each_with_index do |post, i| %>
 	<h3><%=	"#{i+1}. "%><%= link_to post.title, post_path(post) %></h3>
 <% end %>

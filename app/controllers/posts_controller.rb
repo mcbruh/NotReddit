@@ -7,18 +7,23 @@ class PostsController < ApplicationController
 	end
 
 	def new
-		@post = Post.new(:user => @current_user)
+		@post = @current_user.posts.build
 	end
 
 	def create
-		@post = Post.new(post_params)
-		@post.user_id = current_user.id
-		@post.save
-		redirect_to post_path(@post)
+		@post = @current_user.posts.build(post_params)
+		if @post.save
+			flash[:success] = "Post created"
+			redirect_to post_path(@post)
+		else
+			flash[:failure] = "Post failed to create"
+			redirect_to new_post_path
+		end
 	end
 
 	def show
 		@post = Post.find_by(:id => params[:id])
+		@new_comment = Comment.build_from(@post, current_user.id, "")
 	end
 
 	def edit
@@ -30,7 +35,7 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		
+
 	end
 
 	private
@@ -40,6 +45,7 @@ class PostsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :id, :user_id)
+		params.require(:post).permit(:title, :content, :user_id, comment_attributes: [:id, :content, :user_id, :post_id, :_destroy])
 	end
+
 end

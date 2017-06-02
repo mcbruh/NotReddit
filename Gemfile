@@ -36,6 +36,7 @@ gem 'devise'
 gem 'omniauth-twitter'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'activerecord-suppress_range_error', '~> 0.1.0'
+gem 'acts_as_commentable_with_threading'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

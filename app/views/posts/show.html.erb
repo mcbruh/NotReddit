@@ -1,7 +1,23 @@
+<br><br>
+
 <h2><%= @post.title %></h2>
 
 <br>
 
-<p>
+<fieldset>
 	<%= @post.content %>
-</p>
+</fieldset>
+
+<p> posted by <%= link_to "#{@post.user.username}" %></p>
+
+<br><br>
+
+<%= link_to "Comment", new_post_comment_path(@post) %>
+
+<br>
+
+<% if @post.user_id == @current_user.id %>
+	<%= link_to "Edit", edit_post_path(@post) %>
+<% end %>
+
+
