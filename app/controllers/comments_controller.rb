@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 		respond_to do |format|
 			if @comment.save
 				make_child_comment
-				format.html { redirect_to(:back, :notice => 'Comment was successfully added.') }
+				format.html { redirect_back(fallback_location: posts_path , :notice => 'Comment was successfully added.') }
 			else
 				format.html { render :action => "new"}
 			end
