@@ -12,7 +12,7 @@
 
 <br><br>
 
-<%= link_to "Comment", new_post_comment_path(@post) %>
+<%= render partial: "comments/template", locals: {commentable: @post, new_comment: @comment} %>
 
 <br>
 
