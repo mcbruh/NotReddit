@@ -14,8 +14,19 @@
  *= require_self
  */
 
+.not-reddit-logo {
+display: inline;
+padding-left: 6px;
+}
+
 .navbar-right {
-	position: fixed;
-	top: 0;
-	right: 0;
+display: inline;
+margin-right: 0;
+padding: 6px;
+}
+
+.container {
+padding: 0px;
+margin-left: 20px;
+margin-right: 20px;
 }

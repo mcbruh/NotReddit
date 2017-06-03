@@ -34,7 +34,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'devise'
 gem 'omniauth-twitter'
-gem 'acts_as_votable', '~> 0.10.0'
 gem 'activerecord-suppress_range_error', '~> 0.1.0'
 
 group :development, :test do

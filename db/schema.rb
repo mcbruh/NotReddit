@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602225453) do
+ActiveRecord::Schema.define(version: 20170603221359) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170602225453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+    t.string "url"
     t.index ["title"], name: "index_posts_on_title"
   end
 
@@ -52,19 +53,13 @@ ActiveRecord::Schema.define(version: 20170602225453) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
+    t.integer "user_id"
+    t.integer "post_id"
+    t.integer "vote_total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
+    t.index ["user_id"], name: "index_votes_on_user_id", unique: true
+    t.index [nil], name: "index_votes_on_post_ud", unique: true
   end
 
 end

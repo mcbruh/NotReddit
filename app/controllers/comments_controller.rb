@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
 	before_action :authenticate_user!, :find_commentable, :set_user
 
 	def new
