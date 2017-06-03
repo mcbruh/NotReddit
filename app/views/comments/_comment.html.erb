@@ -2,9 +2,11 @@
 	<%= comment.body %> -
 	<small>submitted by <%= link_to comment.user.username %> <%= time_ago_in_words(comment.created_at) %> ago</small>
 
-	<%= form_for [@comment, Comment.new] do |f| %>
+	<%= form_for [comment, Comment.new] do |f| %>
 	<%= f.text_area :body, placeholder: "Reply to this comment" %>
 	<br>
+	<% f.hidden_field :user_id %>
+	<% f.hidden_field :commentable_id %>
 	<%= f.submit "Submit reply" %>
 	<% end %>
 

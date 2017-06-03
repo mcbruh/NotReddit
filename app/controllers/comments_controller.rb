@@ -7,12 +7,12 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = @commentable.comments.new comment_params
+		@comment = @commentable.comments.new(comment_params)
 		@comment.user_id = @user.id
 		if @comment.save
-			redirect_back, flash[:success] = "Comment posted"
+			redirect_back fallback_location: root_path
 		else
-			redirect_back, flash[:failure] = "Failed to post"
+			redirect_back fallback_location: root_path
 		end
 	end
 
