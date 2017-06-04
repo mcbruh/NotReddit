@@ -1,25 +1,20 @@
 <%= form_for(@post) do |f| %>
 
-	<h3>Title</h3>
+<h3>Title</h3>
 
-	<br>
+<fieldset>
+	<%= f.text_field :title %>
+</fieldset>
 
-	<fieldset>
-		<%= f.text_field :title %>
-	</fieldset>
+<br>
+<textarea class="form-control" rows="3"<%= f.text_area :body %> >
+</textarea>
+<br><br>
 
-	<br>
+<div class = "actions">
+	<%=	f.submit %>
+</div>
 
-	<fieldset>
-		<%= f.text_area :content, :rows => "10" %>
-	</fieldset>
-
-	<br><br>
-
-	<div class = "actions">
-		<%=	f.submit %>
-	</div>
-
-	<br>
+<br>
 
 <% end %>
