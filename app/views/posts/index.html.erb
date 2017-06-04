@@ -3,5 +3,6 @@
 
 <% @posts.each_with_index do |post, i| %>
 	<h3><%=	"#{i+1}. "%><%= link_to post.title, post_path(post) %></h3>
-	<small>submitted by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %></small>
+	<small>submitted by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %> ago</small>
+	<%= link_to "#{post.comment_total} comments", post_path(post) %>
 <% end %>
