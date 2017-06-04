@@ -8,4 +8,5 @@ class Post < ApplicationRecord
 	def comment_total
 		
 	end
+	
 end
