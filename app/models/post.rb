@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 	validates :body, :presence => true
 
 	def comment_total
-		
+		Comment.where(commentable_id: id).count
 	end
 	
 end
