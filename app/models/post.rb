@@ -6,7 +6,9 @@ class Post < ApplicationRecord
 	validates :body, :presence => true
 
 	def comment_total
-		Comment.where(commentable_id: id).count
+		parent_comments = Comment.where(:commentable_id => id)
+		child_comments = Comment.where(:commentable_id => parent_comments.map(&:id))
+		parent_comments + child_comments
 	end
 	
 end
