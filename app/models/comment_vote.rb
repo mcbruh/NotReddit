@@ -2,19 +2,19 @@ class CommentVote < ApplicationRecord
 	belongs_to :user
 	belongs_to :comment
 
-	def up?
+	def upvote?
 		value == 1
 	end
 
-	def down?
+	def downvote?
 		!up?
 	end
 
-	def self.up(user, comment)
+	def self.upvote(user, comment)
 		CommentVote.create(user_id: user.id, comment_id: comment.id, value: 1)
 	end
 
-	def self.down(user,comment)
+	def self.downvote(user,comment)
 		CommentVote.create(user_id: user.id, comment_id: comment.id, value: -1)
 	end
 end

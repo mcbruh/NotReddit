@@ -2,19 +2,20 @@ class Vote < ApplicationRecord
 	belongs_to :user
 	belongs_to :post
 
-	def up?
+	def upvote?
 		value == 1
 	end
 
-	def down?
+	def downvote?
 		!up?
 	end
 
-	def self.up(user, post)
+	def self.upvote(user, post)
 		Vote.create(user_id: user.id, post_id: post.id, value: 1)
 	end
 
-	def self.down(user, post)
+	def self.downvote(user, post)
 		Vote.create(user_id: user.id, post_id: post.id, value: -1)
 	end
+
 end
