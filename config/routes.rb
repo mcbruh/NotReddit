@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   	devise_for :users, controllers: {:omniauth_callbacks => "users/omniauth_callbacks"}
   	resources :posts do
   		resources :comments
+  		resources :votes, only: [:create, :destroy]
   	end
   	resources :comments do
   		resources :comments
+  		resources :comment_votes, only: [:create, :destroy]
   	end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

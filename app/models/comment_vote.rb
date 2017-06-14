@@ -17,4 +17,5 @@ class CommentVote < ApplicationRecord
 	def self.downvote(user,comment)
 		CommentVote.create(user_id: user.id, comment_id: comment.id, value: -1)
 	end
+	
 end
