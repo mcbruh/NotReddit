@@ -8,7 +8,7 @@ class Post < ApplicationRecord
 	def comment_total
 		parent_comments = Comment.where(:commentable_id => id)
 		child_comments = Comment.where(:commentable_id => parent_comments.map(&:id))
-		parent_comments + child_comments
+		child_comments
 	end
 	
 end
