@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
 	belongs_to :user
 	has_many :comments, :as => :commentable
-	has_many :votes
+	has_many :upvotes
+	has_many :downvotes
 	validates :title, :presence => true
 	validates :body, :presence => true
 

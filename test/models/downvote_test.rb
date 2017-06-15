@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CommentVoteTest < ActiveSupport::TestCase
+class DownvoteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

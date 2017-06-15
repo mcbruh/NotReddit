@@ -5,8 +5,10 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:twitter]
   has_many :posts
   has_many :comments
-  has_many :votes, through: :posts
-  has_many :comment_votes, through: :comments
+  has_many :upvotes, through: :posts
+  has_many :downvotes, through: :posts
+  has_many :comment_upvotes, through: :comments
+  has_many :comment_downvotes, through: :comments
   validates :email, presence: true, uniqueness:true
   validates :username, presence: true, uniqueness: true
 
