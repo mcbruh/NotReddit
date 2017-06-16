@@ -7,6 +7,8 @@ class UpvotesController < ApplicationController
 		@upvote.post_id = params[:post_id]
 		if @upvote.save
 			redirect_back fallback_location: root_path
+		else
+			redirect_back fallback_location: root_path
 		end
 	end
 
