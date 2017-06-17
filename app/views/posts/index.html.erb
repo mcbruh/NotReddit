@@ -6,5 +6,5 @@
 <small><%= post.karma %> points by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %> ago</small>
 <small><%= link_to "upvote ", upvote_post_path(post), method: :put %></small>
 <small><%= link_to "downvote ", downvote_post_path(post), method: :put %></small>
-<%= link_to "#{post.comment_total.count} comments", post_path(post) %>
+<%= link_to "#{post.comment_total} comments", post_path(post) %>
 <% end %>

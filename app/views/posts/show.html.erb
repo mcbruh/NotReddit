@@ -17,7 +17,7 @@
 <br><br>
 
 
-<h3>all <%= @post.comment_total.count %> comments</h3>
+<h3>all <%= @post.comment_total %> comments</h3>
 
 <%= form_for [@post, Comment.new] do |f| %>
 <textarea class="form-control" rows="3" placeholder="add a comment"
