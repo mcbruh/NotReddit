@@ -4,13 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:twitter]
   has_many :posts
-  has_many :comments
-  has_many :upvotes, through: :posts
-  has_many :downvotes, through: :posts
-  has_many :comment_upvotes, through: :comments
-  has_many :comment_downvotes, through: :comments
+  has_many :comments, through: :posts
   validates :email, presence: true, uniqueness:true
   validates :username, presence: true, uniqueness: true
+  acts_as_voter
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user| 
