@@ -7,6 +7,9 @@
 
 <small> submitted by <%= link_to "#{@post.user.username}" %> <%= time_ago_in_words(@post.created_at) %> ago</small>
 
+<small><%= link_to "upvote ", upvote_post_path(@post), method: :put %><%= @post.get_upvotes.size %></small>
+<small><%= link_to "downvote ", downvote_post_path(@post), method: :put %><%= @post.get_downvotes.size %></small>
+
 <% if @post.user_id == @current_user.id %>
 	<small><%= link_to "edit post", edit_post_path(@post) %></small>
 <% end %>
