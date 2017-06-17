@@ -68,4 +68,9 @@ class User < ApplicationRecord
     self.comment_upvotes - self.comment_downvotes
   end
 
+  def content
+    content = self.posts + self.comments
+    content
+  end
+
 end

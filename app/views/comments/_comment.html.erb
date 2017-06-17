@@ -1,6 +1,6 @@
 <li>
 	<%= comment.body %> -
-	<small><%= comment.karma %> points by <%= link_to comment.user.username %> <%= time_ago_in_words(comment.created_at) %> ago</small>
+	<small><%= comment.karma %> points by <%= link_to comment.user.username, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago</small>
 
 	<small><%= link_to "upvote", upvote_comment_path(comment), method: :put %></small>
 	<small><%= link_to "downvote", downvote_comment_path(comment), method: :put	%></small>
@@ -9,6 +9,7 @@
 	<%= f.text_area :body, placeholder: "Reply to this comment" %>
 	<br>
 	<% f.hidden_field :user_id %>
+	<% f.hidden_field :post_id %>
 	<% f.hidden_field :commentable_id %>
 	<%= f.submit "Submit reply" %>
 	<% end %>

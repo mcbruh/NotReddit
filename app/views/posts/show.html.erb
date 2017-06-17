@@ -5,7 +5,7 @@
 	<%= @post.body %>
 </fieldset>
 
-<small><%= @post.karma %> points by <%= link_to "#{@post.user.username}" %> <%= time_ago_in_words(@post.created_at) %> ago</small>
+<small><%= @post.karma %> points by <%= link_to @post.user.username, user_path(@post.user) %> <%= time_ago_in_words(@post.created_at) %> ago</small>
 
 <small><%= link_to "upvote ", upvote_post_path(@post), method: :put %></small>
 <small><%= link_to "downvote ", downvote_post_path(@post), method: :put %></small>
@@ -17,7 +17,7 @@
 <br><br>
 
 
-<h3>all <%= @post.comment_total %> comments</h3>
+<h3>all <%= @post.comment_total.size %> comments</h3>
 
 <%= form_for [@post, Comment.new] do |f| %>
 <textarea class="form-control" rows="3" placeholder="add a comment"
