@@ -37,6 +37,18 @@ class PostsController < ApplicationController
 
 	end
 
+	def upvote
+		@post = Post.find(params[:id])
+		@post.upvoted_by(current_user)
+		redirect_back fallback_location: root_path
+	end
+
+	def downvote
+		@post = Post.find(params[:id])
+		@post.downvoted_by(current_user)
+		redirect_back fallback_location: root_path
+	end
+
 	private
 
 	def set_current_user
