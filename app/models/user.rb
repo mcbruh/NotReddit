@@ -28,4 +28,44 @@ class User < ApplicationRecord
   	end
   end
 
+  def post_upvotes 
+    upvotes = []
+    self.posts.each do |post|
+      upvotes << post.get_upvotes.size 
+    end
+    upvotes.sum
+  end
+
+  def post_downvotes
+    downvotes = []
+    self.posts.each do |post|
+      downvotes << post.get_downvotes.size
+    end
+    downvotes.sum
+  end
+
+  def comment_upvotes
+    upvotes = []
+    self.comments.each do |comment|
+      upvotes << comment.get_upvotes.size
+    end
+    upvotes.sum
+  end
+
+  def comment_downvotes
+    downvotes = []
+    self.comments.each do |comment|
+      downvotes << comment.get_downvotes.size
+    end
+    downvotes.sum
+  end
+
+  def post_karma
+    self.post_upvotes - self.post_downvotes
+  end
+
+  def comment_karma
+    self.comment_upvotes - self.comment_downvotes
+  end
+
 end

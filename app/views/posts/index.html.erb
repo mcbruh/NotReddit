@@ -3,7 +3,7 @@
 
 <% @posts.each_with_index do |post, i| %>
 <h3><%=	"#{i+1}. "%><%= link_to post.title, post_path(post) %></h3>
-<small><%= post.karma %> points by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %> ago</small>
+<small><%= post.karma %> points by <%= link_to post.user.username, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago</small>
 <small><%= link_to "upvote ", upvote_post_path(post), method: :put %></small>
 <small><%= link_to "downvote ", downvote_post_path(post), method: :put %></small>
 <%= link_to "#{post.comment_total} comments", post_path(post) %>
