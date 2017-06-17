@@ -39,13 +39,13 @@ class PostsController < ApplicationController
 
 	def upvote
 		@post = Post.find(params[:id])
-		@post.upvoted_by(current_user)
+		@post.upvote_by(current_user)
 		redirect_back fallback_location: root_path
 	end
 
 	def downvote
 		@post = Post.find(params[:id])
-		@post.downvoted_by(current_user)
+		@post.downvote_by(current_user)
 		redirect_back fallback_location: root_path
 	end
 

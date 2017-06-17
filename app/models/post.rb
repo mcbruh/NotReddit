@@ -10,5 +10,12 @@ class Post < ApplicationRecord
 		child_comments = Comment.where(:commentable_id => parent_comments.map(&:id))
 		child_comments
 	end
+
+	def karma
+		upvotes = self.get_upvotes.size
+		downvotes = self.get_downvotes.size
+		karma = upvotes - downvotes
+		karma
+	end
 	
 end
