@@ -11,7 +11,7 @@
 <small><%= link_to "downvote ", downvote_post_path(@post), method: :put %></small>
 
 <% if @post.user_id == @current_user.id %>
-	<small><%= link_to "edit post", edit_post_path(@post) %></small>
+<small><%= link_to "edit post", edit_post_path(@post) %></small>
 <% end %>
 
 <br><br>
@@ -20,18 +20,18 @@
 <h3>all <%= @post.comment_total.count %> comments</h3>
 
 <%= form_for [@post, Comment.new] do |f| %>
-	<textarea class="form-control" rows="3" placeholder="add a comment"
-	<%= f.text_area :body %>
-	</textarea>
-	<br>
-	<%= f.submit "Submit comment" %>
+<textarea class="form-control" rows="3" placeholder="add a comment"
+<%= f.text_area :body %>
+</textarea>
+<br>
+<%= f.submit "Submit comment" %>
 <% end %>
 
 <div class="container">
 
-<ul>
-	<%= render(partial: 'comments/comment', collection: @post.comments) %>
-</ul>
+	<ul>
+		<%= render(partial: 'comments/comment', collection: @post.comments) %>
+	</ul>
 
 </div>
 
