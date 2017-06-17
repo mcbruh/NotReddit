@@ -2,10 +2,9 @@
 <a href="posts/new"><button type="button" class="btn btn-primary btn-lg">submit a post</button></a>
 
 <% @posts.each_with_index do |post, i| %>
-<small><%= post.karma %></small>
 <h3><%=	"#{i+1}. "%><%= link_to post.title, post_path(post) %></h3>
-<small>submitted by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %> ago</small>
-<small><%= link_to "upvote ", upvote_post_path(post), method: :put %><%= post.get_upvotes.size %></small>
-<small><%= link_to "downvote ", downvote_post_path(post), method: :put %><%= post.get_downvotes.size %></small>
+<small><%= post.karma %> points by <%= post.user.username %> <%= time_ago_in_words(post.created_at) %> ago</small>
+<small><%= link_to "upvote ", upvote_post_path(post), method: :put %></small>
+<small><%= link_to "downvote ", downvote_post_path(post), method: :put %></small>
 <%= link_to "#{post.comment_total.count} comments", post_path(post) %>
 <% end %>
