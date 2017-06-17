@@ -1,2 +1,0 @@
-module CommentUpvotesHelper
-end
