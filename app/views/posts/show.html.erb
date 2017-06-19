@@ -10,7 +10,7 @@
 <small><%= link_to "upvote ", upvote_post_path(@post), method: :put %></small>
 <small><%= link_to "downvote ", downvote_post_path(@post), method: :put %></small>
 
-<% if @post.user_id == @current_user.id %>
+<% if @post.user_id == current_user.id %>
 <small><%= link_to "edit post", edit_post_path(@post) %></small>
 <% end %>
 

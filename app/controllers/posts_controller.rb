@@ -1,17 +1,21 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_current_user
 
 	def index
 		@posts = Post.all
 	end
 
 	def new
-		@post = @current_user.posts.build
+		@post = current_user.posts.build
+	end
+
+	def links
+		@post = current_user.posts.build
 	end
 
 	def create
-		@post = @current_user.posts.build(post_params)
+		@post = current_user.posts.build(post_params)
+
 		if @post.save
 			flash[:success] = "Post created"
 			redirect_to post_path(@post)
@@ -51,9 +55,6 @@ class PostsController < ApplicationController
 
 	private
 
-	def set_current_user
-		@current_user = current_user
-	end
 
 	def post_params
 		params.require(:post).permit(:title, :body, :url, :user_id)
