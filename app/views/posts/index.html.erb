@@ -3,7 +3,11 @@
 <a href="posts/new"><button type="button" class="btn btn-primary btn-lg">submit a post</button></a>
 
 <% @posts.each_with_index do |post, i| %>
+<% if !post.url.blank? %>
+<h3><%=	"#{i+1}. "%><%= link_to post.title, post.url %></h3>
+<% else %>
 <h3><%=	"#{i+1}. "%><%= link_to post.title, post_path(post) %></h3>
+<% end %>
 <small><%= post.karma %> points by <%= link_to post.user.username, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago</small>
 <small><%= link_to "upvote ", upvote_post_path(post), method: :put %></small>
 <small><%= link_to "downvote ", downvote_post_path(post), method: :put %></small>

@@ -9,20 +9,20 @@ class PostsController < ApplicationController
 		@post = current_user.posts.build
 	end
 
-	def links
-		@post = current_user.posts.build
-	end
-
 	def create
 		@post = current_user.posts.build(post_params)
-
 		if @post.save
 			flash[:success] = "Post created"
 			redirect_to post_path(@post)
 		else
+			byebug
 			flash[:failure] = "Post failed to create"
 			redirect_to new_post_path
 		end
+	end
+
+	def links
+		@post = current_user.posts.build
 	end
 
 	def show
