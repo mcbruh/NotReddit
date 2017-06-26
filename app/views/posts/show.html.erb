@@ -1,5 +1,5 @@
 <% if !@post.url.blank? %>
-<h3><fieldset><%= link_to @post.title, @post.url %></fieldset></h3>
+<h3><fieldset><%= link_to @post.title, @post.url, target: "_blank" %></fieldset></h3>
 <% else %>
 <fieldset><%= @post.title %></fieldset>
 <% end %>
