@@ -16,6 +16,22 @@ class CommentsController < ApplicationController
 		end
 	end
 
+	def edit
+		@comment = Comment.find(params[:id])
+	end
+
+	def update
+		@comment = Comment.find(params[:id])
+		@comment.update
+		redirect_back fallback_location: root_path
+	end
+
+	def destroy
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_back fallback_location: root_path
+	end
+
 	def upvote
 		comment = Comment.find(params[:id])
 		comment.upvote_by(current_user)
