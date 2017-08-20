@@ -15,7 +15,6 @@ class PostsController < ApplicationController
 			flash[:success] = "Post created"
 			redirect_to post_path(@post)
 		else
-			byebug
 			flash[:failure] = "Post failed to create"
 			redirect_to new_post_path
 		end
